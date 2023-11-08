@@ -120,7 +120,7 @@ class Chargify(object):
 
   def transactions(self, bookmark=None):
     since_date = utils.strptime_with_tz(bookmark).strftime('%Y-%m-%d')
-    for i in self.get("transactions.json", since_date=since_date, direction="asc"):
+    for i in self.get("transactions.json", since_date=since_date, until_date=since_date, direction="asc"):
       for j in i:
         yield j["transaction"]
 
